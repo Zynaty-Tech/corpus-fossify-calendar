@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
@@ -117,6 +119,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
                         }
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ManageAutomaticBackupsDialog)
             }
     }
 
@@ -138,6 +141,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
                 }
             }
         }
+        ScreenTags.tagDialog(R.id.screen_tag_FilePickerDialog)
     }
 }
 

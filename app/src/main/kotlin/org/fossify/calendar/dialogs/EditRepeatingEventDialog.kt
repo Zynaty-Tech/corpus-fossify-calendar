@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
@@ -36,6 +38,7 @@ class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean
                     alertDialog.hideKeyboard()
                     alertDialog.setOnDismissListener { sendResult(null) }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_EditRepeatingEventDialog)
             }
     }
 

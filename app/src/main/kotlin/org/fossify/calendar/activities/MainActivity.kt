@@ -1,5 +1,7 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ShortcutInfo
@@ -614,6 +616,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             shouldGoToTodayBeVisible = false
             refreshMenuItems()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ChangeViewDialog)
     }
 
     private fun goToToday() {
@@ -698,6 +701,7 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
                 config.showHolidayManagementNotice = false
                 manageHolidays()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_HolidayNoticeDialog)
             return
         }
         ensureBackgroundThread {

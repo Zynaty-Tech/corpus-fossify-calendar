@@ -1,5 +1,8 @@
 package org.fossify.calendar.fragments
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -114,6 +117,7 @@ class DayFragmentsHolder : MyFragmentHolder(), NavigationListener {
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
             .apply {
                 activity?.setupDialogStuff(datePicker, this)
+                ScreenTags.tagDialog(R.id.screen_tag_GoToDateDialog)
             }
     }
 

@@ -1,5 +1,8 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.activities.SimpleActivity
 import org.fossify.calendar.adapters.FilterCalendarAdapter
@@ -29,6 +32,7 @@ class SelectCalendarsDialog(
                     activity.setupDialogStuff(binding.root, this) { alertDialog ->
                         dialog = alertDialog
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_SelectCalendarsDialog)
                 }
         }
     }

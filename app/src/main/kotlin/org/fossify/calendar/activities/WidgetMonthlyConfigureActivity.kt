@@ -1,5 +1,8 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.annotation.SuppressLint
 import android.appwidget.AppWidgetManager
 import android.content.Context
@@ -116,6 +119,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
                 updateBackgroundColor()
             }
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
     }
 
     private fun pickTextColor() {
@@ -126,6 +130,7 @@ class WidgetMonthlyConfigureActivity : SimpleActivity(), MonthlyCalendar {
                 updateDays()
             }
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
     }
 
     private fun updateGridShow() = binding.configCalendar.apply {

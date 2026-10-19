@@ -1,5 +1,8 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import org.fossify.calendar.databinding.DatetimePatternInfoLayoutBinding
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.extensions.getAlertDialogBuilder
@@ -14,6 +17,7 @@ class DateTimePatternInfoDialog(activity: BaseSimpleActivity) {
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> { } }
             .apply {
                 activity.setupDialogStuff(binding.root, this)
+                ScreenTags.tagDialog(R.id.screen_tag_DateTimePatternInfoDialog)
             }
     }
 }

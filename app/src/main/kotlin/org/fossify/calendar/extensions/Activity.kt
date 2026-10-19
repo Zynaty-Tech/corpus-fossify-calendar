@@ -1,5 +1,8 @@
 package org.fossify.calendar.extensions
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import android.net.Uri
 import org.fossify.calendar.BuildConfig
@@ -86,6 +89,7 @@ fun Activity.showEventRepeatIntervalDialog(curSeconds: Int, callback: (minutes: 
             callback(it as Int)
         }
     }
+    ScreenTags.tagDialog(R.id.screen_tag_RepeatIntervalDialog)
 }
 
 fun SimpleActivity.tryImportEventsFromFile(uri: Uri, callback: (Boolean) -> Unit = {}) {

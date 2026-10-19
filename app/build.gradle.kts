@@ -41,6 +41,8 @@ android {
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
+        // mqa screen tags: false here, so release (and any new build type) carries no tags by omission.
+        buildConfigField("boolean", "EXPOSE_TEST_TAGS", "false")
     }
 
     signingConfigs {
@@ -71,6 +73,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
+            buildConfigField("boolean", "EXPOSE_TEST_TAGS", "true")
         }
         release {
             isMinifyEnabled = true
@@ -93,6 +96,8 @@ android {
 
     sourceSets {
         getByName("main").java.directories.add("src/main/kotlin")
+        // mqa screen map: debug only (an asset cannot be gated by a BuildConfig flag).
+        getByName("debug").assets.directories.add("src/qa/assets")
     }
 
     compileOptions {
@@ -131,6 +136,11 @@ android {
             enableSplit = false
         }
     }
+}
+
+tasks.withType<Test>().configureEach {
+    inputs.file("src/qa/assets/mqa-screens.json")
+    inputs.file("src/main/kotlin/org/fossify/calendar/qa/ScreenTags.kt")
 }
 
 detekt {

@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
@@ -37,6 +39,7 @@ class SelectEventColorDialog(val activity: Activity, val colors: IntArray, var c
                 activity.setupDialogStuff(binding.root, this, R.string.event_color) {
                     dialog = it
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_SelectEventColorDialog)
             }
     }
 }

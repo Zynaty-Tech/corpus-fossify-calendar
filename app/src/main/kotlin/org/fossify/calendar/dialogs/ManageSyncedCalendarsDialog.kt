@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.text.TextUtils
 import android.widget.RelativeLayout
 import org.fossify.calendar.R
@@ -42,6 +44,7 @@ class ManageSyncedCalendarsDialog(val activity: SimpleActivity, val callback: ()
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.select_caldav_calendars)
+                ScreenTags.tagDialog(R.id.screen_tag_ManageSyncedCalendarsDialog)
             }
     }
 

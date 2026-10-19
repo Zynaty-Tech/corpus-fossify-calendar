@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug only: the mqa QA seed receiver. Release has no class and no manifest entry. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- DUMP is held by adb shell and cannot be granted to normal apps: other apps cannot trigger it. -->
+        <receiver
+            android:name="org.fossify.calendar.qa.QaSeedReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="org.fossify.calendar.QA_SEED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

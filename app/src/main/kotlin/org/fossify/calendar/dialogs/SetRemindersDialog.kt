@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.view.View
 import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
@@ -55,12 +57,14 @@ class SetRemindersDialog(
                                 setReminders2.beVisible()
                             }
                         }
+                        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
                     } else {
                         PermissionRequiredDialog(
                             activity = activity,
                             textId = org.fossify.commons.R.string.allow_notifications_reminders,
                             positiveActionCallback = { activity.openNotificationSettings() }
                         )
+                        ScreenTags.tagDialog(R.id.screen_tag_NotificationPermissionDialog)
                     }
                 }
             }
@@ -76,6 +80,7 @@ class SetRemindersDialog(
                         setReminders3.beVisible()
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
             }
 
             setReminders3.setOnClickListener {
@@ -86,6 +91,7 @@ class SetRemindersDialog(
                     mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
                     setReminders3.text = activity.getFormattedMinutes(mReminder3Minutes)
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
             }
 
             addEventAutomaticallyCheckbox.apply {
@@ -110,6 +116,7 @@ class SetRemindersDialog(
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.event_reminders)
+                ScreenTags.tagDialog(R.id.screen_tag_SetRemindersDialog)
             }
     }
 

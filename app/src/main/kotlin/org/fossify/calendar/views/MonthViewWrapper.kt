@@ -1,5 +1,7 @@
 package org.fossify.calendar.views
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -176,6 +178,7 @@ class MonthViewWrapper(
                             context.launchNewTaskIntent(day.code)
                         }
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_NewEventOrTaskDialog)
                 } else {
                     context.launchNewEventIntent(day.code)
                 }

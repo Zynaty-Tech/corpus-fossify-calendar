@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "screens": [
+    {"tag": "MonthFragmentsHolder", "roles": ["user"], "openedBy": "Monthly view", "note": "start screen (default view); Change view > Monthly view"},
+    {"tag": "MonthDayFragmentsHolder", "roles": ["user"], "openedBy": "Monthly and daily view", "scroll": {"expects": ["text"]}},
+    {"tag": "WeekFragmentsHolder", "roles": ["user"], "openedBy": "Weekly view"},
+    {"tag": "DayFragmentsHolder", "roles": ["user"], "openedBy": "Daily view", "note": "also opened by tapping a day in the monthly view"},
+    {"tag": "YearFragmentsHolder", "roles": ["user"], "openedBy": "Yearly view"},
+    {"tag": "EventListFragment", "roles": ["user"], "openedBy": "Simple event list", "needs": "events in the coming days (seed calendar-mixed or calendar-long)", "scroll": {"depth": 10, "expects": ["text"]}},
+    {"tag": "EventActivity", "roles": ["user"], "openedBy": "New Event", "note": "also opens an existing event from any view"},
+    {"tag": "TaskActivity", "roles": ["user"], "openedBy": "Task", "note": "the + button first shows Event / Task; also opens an existing task"},
+    {"tag": "SettingsActivity", "roles": ["user"], "openedBy": "Settings"},
+    {"tag": "ManageCalendarsActivity", "roles": ["user"], "openedBy": "Manage calendars", "scroll": {"expects": ["text", "button"]}},
+    {"tag": "SelectTimeZoneActivity", "roles": ["user"], "openedBy": "time zone row of an event", "needs": "Settings > Allow changing event time zones switched on"},
+    {"tag": "WidgetListConfigureActivity", "roles": ["user"], "openedBy": "Customize widget colors", "note": "also opened by the launcher when an event list widget is added"},
+    {"tag": "WidgetMonthlyConfigureActivity", "roles": ["user"], "unreachable": "only the launcher opens it, when a monthly widget is added to the home screen"},
+    {"tag": "WidgetDateConfigureActivity", "roles": ["user"], "unreachable": "only the launcher opens it, when a date widget is added to the home screen"},
+    {"tag": "CalendarPickerActivity", "roles": ["user"], "unreachable": "only the + button of a home screen widget opens it", "note": "transparent; shows NewEventOrTaskDialog"},
+    {"tag": "SnoozeReminderActivity", "roles": ["user"], "unreachable": "only the Snooze action of a reminder notification opens it", "note": "transparent; shows SnoozeTimeDialog"},
+    {"tag": "AboutActivity", "roles": ["user"], "openedBy": "About", "note": "Fossify Commons library screen"},
+    {"tag": "FAQActivity", "roles": ["user"], "openedBy": "Frequently asked questions", "note": "Fossify Commons library screen, from About"},
+    {"tag": "LicenseActivity", "roles": ["user"], "openedBy": "Third-party licences", "note": "Fossify Commons library screen, from About"},
+    {"tag": "ContributorsActivity", "roles": ["user"], "openedBy": "Contributors", "note": "Fossify Commons library screen, from About"},
+    {"tag": "DonationActivity", "roles": ["user"], "openedBy": "Donate", "note": "Fossify Commons library screen, from About"},
+    {"tag": "CustomizationActivity", "roles": ["user"], "openedBy": "Customize appearance", "note": "Fossify Commons library screen, from Settings"}
+  ],
+  "seeds": {
+    "calendar-mixed": {"broadcast": "org.fossify.calendar.QA_SEED", "extras": {"scenario": "calendar-mixed"}},
+    "calendar-long": {"broadcast": "org.fossify.calendar.QA_SEED", "extras": {"scenario": "calendar-long"}},
+    "calendar-empty": {"broadcast": "org.fossify.calendar.QA_SEED", "extras": {"scenario": "calendar-empty"}}
+  }
+}

@@ -1,5 +1,7 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.content.Context
 import android.database.ContentObserver
 import android.os.Handler
@@ -100,12 +102,14 @@ open class SimpleActivity : BaseSimpleActivity() {
                     ) {
                         callback()
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_NotificationsDisabledDialog)
                 }
             } else {
                 PermissionRequiredDialog(
                     this,
                     org.fossify.commons.R.string.allow_notifications_reminders,
                     { openNotificationSettings() })
+                ScreenTags.tagDialog(R.id.screen_tag_NotificationPermissionDialog)
             }
         }
     }
@@ -123,6 +127,7 @@ open class SimpleActivity : BaseSimpleActivity() {
                         openRequestExactAlarmSettings(BuildConfig.APPLICATION_ID)
                     },
                 )
+                ScreenTags.tagDialog(R.id.screen_tag_ExactAlarmPermissionDialog)
             }
         } else {
             callback()

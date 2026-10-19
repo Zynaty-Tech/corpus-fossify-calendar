@@ -1,5 +1,7 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.TimePickerDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -505,6 +507,7 @@ class SettingsActivity : SimpleActivity() {
                 config.firstDayOfWeek = firstDayOfWeek
                 settingsStartWeekOn.text = getDayOfWeekString(firstDayOfWeek)
             }
+            ScreenTags.tagDialog(R.id.screen_tag_StartWeekOnDialog)
         }
     }
 
@@ -536,6 +539,7 @@ class SettingsActivity : SimpleActivity() {
                     )
                 }
             }
+            ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
         }
     }
 
@@ -547,6 +551,7 @@ class SettingsActivity : SimpleActivity() {
             ) {
                 eventsHelper.deleteAllEvents()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_DeleteAllEventsDialog)
         }
     }
 
@@ -582,6 +587,7 @@ class SettingsActivity : SimpleActivity() {
                 config.startWeeklyAt = it as Int
                 settingsStartWeeklyAt.text = getHoursString(it)
             }
+            ScreenTags.tagDialog(R.id.screen_tag_WeeklyViewStartDialog)
         }
     }
 
@@ -650,6 +656,7 @@ class SettingsActivity : SimpleActivity() {
                         updateReminderSound(defaultAlarm)
                     }
                 })
+            ScreenTags.tagDialog(R.id.screen_tag_AlarmSoundDialog)
         }
     }
 
@@ -681,6 +688,7 @@ class SettingsActivity : SimpleActivity() {
                 config.reminderAudioStream = it as Int
                 settingsReminderAudioStream.text = getAudioStreamText()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_AudioStreamDialog)
         }
     }
 
@@ -726,6 +734,7 @@ class SettingsActivity : SimpleActivity() {
                 config.snoozeTime = it / 60
                 updateSnoozeTime()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_SnoozeTimeDialog)
         }
     }
 
@@ -750,6 +759,7 @@ class SettingsActivity : SimpleActivity() {
                 config.defaultReminder1 = if (it == -1 || it == 0) it else it / 60
                 settingsDefaultReminder1.text = getFormattedMinutes(config.defaultReminder1)
             }
+            ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
         }
     }
 
@@ -760,6 +770,7 @@ class SettingsActivity : SimpleActivity() {
                 config.defaultReminder2 = if (it == -1 || it == 0) it else it / 60
                 settingsDefaultReminder2.text = getFormattedMinutes(config.defaultReminder2)
             }
+            ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
         }
     }
 
@@ -770,6 +781,7 @@ class SettingsActivity : SimpleActivity() {
                 config.defaultReminder3 = if (it == -1 || it == 0) it else it / 60
                 settingsDefaultReminder3.text = getFormattedMinutes(config.defaultReminder3)
             }
+            ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
         }
     }
 
@@ -805,6 +817,7 @@ class SettingsActivity : SimpleActivity() {
                 config.displayPastEvents = result
                 updatePastEventsText(result)
             }
+            ScreenTags.tagDialog(R.id.screen_tag_CustomIntervalDialog)
         }
     }
 
@@ -838,6 +851,7 @@ class SettingsActivity : SimpleActivity() {
                 settingsFontSize.text = getFontSizeText()
                 updateWidgets()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_FontSizeDialog)
         }
     }
 
@@ -872,6 +886,7 @@ class SettingsActivity : SimpleActivity() {
                 settingsListWidgetViewToOpen.text = getDefaultViewText()
                 updateWidgets()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_ListWidgetViewDialog)
         }
     }
 
@@ -976,9 +991,11 @@ class SettingsActivity : SimpleActivity() {
                             currentDateTime.minuteOfHour,
                             config.use24HourFormat
                         ).show()
+                        ScreenTags.tagDialog(R.id.screen_tag_TimePickerDialog)
                     }
                 }
             }
+            ScreenTags.tagDialog(R.id.screen_tag_DefaultStartTimeDialog)
         }
     }
 
@@ -1003,6 +1020,7 @@ class SettingsActivity : SimpleActivity() {
                 config.defaultDuration = result
                 updateDefaultDurationText()
             }
+            ScreenTags.tagDialog(R.id.screen_tag_CustomIntervalDialog)
         }
     }
 
@@ -1190,6 +1208,7 @@ class SettingsActivity : SimpleActivity() {
                                 parseFile(File(it).inputStream())
                             }
                         }
+                        ScreenTags.tagDialog(R.id.screen_tag_FilePickerDialog)
                     }
                 }
             }
@@ -1317,6 +1336,7 @@ class SettingsActivity : SimpleActivity() {
                         textId = org.fossify.commons.R.string.allow_notifications_reminders,
                         positiveActionCallback = { openNotificationSettings() }
                     )
+                    ScreenTags.tagDialog(R.id.screen_tag_NotificationPermissionDialog)
                 }
             }
         } else {
@@ -1332,6 +1352,7 @@ class SettingsActivity : SimpleActivity() {
         FilePickerDialog(this) {
             showImportEventsDialog(it) {}
         }
+        ScreenTags.tagDialog(R.id.screen_tag_FilePickerDialog)
     }
 
 

@@ -1,5 +1,8 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
@@ -97,6 +100,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
                 updateBackgroundColor()
             }
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
     }
 
     private fun pickTextColor() {
@@ -106,6 +110,7 @@ class WidgetDateConfigureActivity : SimpleActivity() {
                 updateTextColor()
             }
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
     }
 
     private fun requestWidgetUpdate() {

@@ -36,6 +36,7 @@
 
     <ImageView
         android:id="@+id/type_color"
+        android:contentDescription="@string/color"
         android:layout_width="@dimen/color_sample_size"
         android:layout_height="@dimen/color_sample_size"
         android:layout_marginStart="@dimen/small_margin"

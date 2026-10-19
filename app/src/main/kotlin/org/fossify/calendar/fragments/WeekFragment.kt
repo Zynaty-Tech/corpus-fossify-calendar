@@ -1,5 +1,7 @@
 package org.fossify.calendar.fragments
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipDescription
@@ -478,6 +480,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                             RadioGroupDialog(activity!!, items) {
                                 launchNewEventIntent(timestamp, it as Int == TYPE_TASK)
                             }
+                            ScreenTags.tagDialog(R.id.screen_tag_NewEventOrTaskDialog)
                         } else {
                             launchNewEventIntent(timestamp, false)
                         }

@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AlertDialog
@@ -47,6 +49,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
                         binding.dialogRadioView.check(R.id.repeat_type_x_times)
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_RepeatLimitTypePickerDialog)
             }
     }
 
@@ -95,6 +98,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(activity.config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(R.id.screen_tag_DatePickerDialog)
     }
 
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
