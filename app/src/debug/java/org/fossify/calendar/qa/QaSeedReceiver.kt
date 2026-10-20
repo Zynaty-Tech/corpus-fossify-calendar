@@ -11,7 +11,11 @@ import org.fossify.calendar.extensions.eventsHelper
 import org.fossify.calendar.helpers.DAY
 import org.fossify.calendar.helpers.FLAG_ALL_DAY
 import org.fossify.calendar.helpers.LOCAL_CALENDAR_ID
+import org.fossify.calendar.helpers.MONTH
 import org.fossify.calendar.helpers.MONTHLY_VIEW
+import org.fossify.calendar.helpers.REPEAT_SAME_DAY
+import org.fossify.calendar.helpers.WEEK
+import org.fossify.calendar.helpers.YEAR
 import org.fossify.calendar.helpers.REMINDER_OFF
 import org.fossify.calendar.helpers.TYPE_EVENT
 import org.fossify.calendar.helpers.TYPE_TASK
@@ -26,8 +30,10 @@ import org.joda.time.DateTimeZone
  *   adb shell am broadcast -a org.fossify.calendar.QA_SEED -p org.fossify.calendar.debug --es scenario calendar-mixed
  *
  * Scenarios (every one is idempotent: it clears the data it owns, then writes it fresh):
- * - calendar-mixed: calendars "Regular event" (built in) + "Work"; 4 events (one repeats daily, one has a
- *   30-minute reminder, one is all-day) and 1 task.
+ * - calendar-mixed: calendars "Regular event" (built in) + "Work"; one record of every kind the calendar stores:
+ *   single and repeating events (daily, weekly, monthly, yearly, and one daily with a repeat limit: each repeat kind
+ *   opens a different repeat-rule dialog in the editor), today / yesterday / future, an all-day event, a 30-minute
+ *   reminder, a location, a description, a custom event colour, and two tasks (one with a reminder).
  * - calendar-long: calendar-mixed + 60 one-per-day "Meeting NN" events (for the event list view).
  * - calendar-empty: no events, no "Work" calendar.
  *
@@ -94,6 +100,30 @@ class QaSeedReceiver : BroadcastReceiver() {
                 flags = FLAG_ALL_DAY
             },
             event(1005, "Pay rent", today.withHourOfDay(18), minutes = 0).apply { type = TYPE_TASK },
+            event(1006, "Lunch with Sam", today.minusDays(1).withHourOfDay(12), minutes = 60),
+            event(1007, "Gym", today.withHourOfDay(7), minutes = 60).apply {
+                repeatInterval = WEEK
+                repeatRule = 1 shl (today.dayOfWeek - 1)
+            },
+            event(1008, "Rent due", today.withHourOfDay(8), minutes = 15).apply {
+                repeatInterval = MONTH
+                repeatRule = REPEAT_SAME_DAY
+            },
+            event(1009, "Anniversary", today.plusDays(3).withHourOfDay(19), minutes = 120).apply {
+                repeatInterval = YEAR
+                repeatRule = REPEAT_SAME_DAY
+            },
+            event(1010, "Course week", today.withHourOfDay(17), minutes = 60).apply {
+                repeatInterval = DAY
+                repeatLimit = today.plusDays(5).seconds()
+            },
+            event(1011, "Concert", today.plusDays(1).withHourOfDay(20), minutes = 90).apply {
+                color = CONCERT_COLOR
+            },
+            event(1012, "Call the bank", today.plusDays(1).withHourOfDay(10), minutes = 0).apply {
+                type = TYPE_TASK
+                reminder1Minutes = 10
+            },
         )
         if (long) {
             for (n in 1..60) {
@@ -122,5 +152,6 @@ class QaSeedReceiver : BroadcastReceiver() {
     private companion object {
         const val WORK_CALENDAR_ID = 100L
         const val WORK_COLOR = -0xbf7f01 // a fixed blue
+        const val CONCERT_COLOR = -0x16e19d // a fixed red
     }
 }

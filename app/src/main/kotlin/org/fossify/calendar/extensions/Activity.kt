@@ -90,6 +90,17 @@ fun Activity.showEventRepeatIntervalDialog(curSeconds: Int, callback: (minutes: 
         }
     }
     ScreenTags.tagDialog(R.id.screen_tag_RepeatIntervalDialog)
+    ScreenTags.tagRadioOptions(items.map { it.value }) {
+        when (it) {
+            0 -> R.id.repeat_interval_option_none
+            DAY -> R.id.repeat_interval_option_daily
+            WEEK -> R.id.repeat_interval_option_weekly
+            MONTH -> R.id.repeat_interval_option_monthly
+            YEAR -> R.id.repeat_interval_option_yearly
+            -1 -> R.id.repeat_interval_option_custom
+            else -> 0
+        }
+    }
 }
 
 fun SimpleActivity.tryImportEventsFromFile(uri: Uri, callback: (Boolean) -> Unit = {}) {

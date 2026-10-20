@@ -481,6 +481,7 @@ class WeekFragment : Fragment(), WeeklyCalendar {
                                 launchNewEventIntent(timestamp, it as Int == TYPE_TASK)
                             }
                             ScreenTags.tagDialog(R.id.screen_tag_NewEventOrTaskDialog)
+                            ScreenTags.tagRadioOptions(items.map { it.id }) { if (it == TYPE_TASK) R.id.new_item_option_task else R.id.new_item_option_event }
                         } else {
                             launchNewEventIntent(timestamp, false)
                         }

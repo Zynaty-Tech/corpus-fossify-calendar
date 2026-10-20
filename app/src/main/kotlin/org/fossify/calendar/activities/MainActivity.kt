@@ -617,6 +617,17 @@ class MainActivity : SimpleActivity(), RefreshRecyclerViewListener {
             refreshMenuItems()
         }
         ScreenTags.tagDialog(R.id.screen_tag_ChangeViewDialog)
+        ScreenTags.tagRadioOptions(items.map { it.id }) {
+            when (it) {
+                DAILY_VIEW -> R.id.change_view_option_daily
+                WEEKLY_VIEW -> R.id.change_view_option_weekly
+                MONTHLY_VIEW -> R.id.change_view_option_monthly
+                MONTHLY_DAILY_VIEW -> R.id.change_view_option_monthly_daily
+                YEARLY_VIEW -> R.id.change_view_option_yearly
+                EVENTS_LIST_VIEW -> R.id.change_view_option_event_list
+                else -> 0
+            }
+        }
     }
 
     private fun goToToday() {

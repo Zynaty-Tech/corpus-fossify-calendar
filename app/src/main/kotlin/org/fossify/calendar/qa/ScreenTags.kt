@@ -5,6 +5,8 @@ import android.app.Application
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.RadioGroup
 import android.view.WindowManager
 import android.view.inspector.WindowInspector
 import androidx.annotation.IdRes
@@ -108,6 +110,33 @@ object ScreenTags {
         if (type == WindowManager.LayoutParams.TYPE_APPLICATION && root.id == View.NO_ID) {
             root.id = id
         }
+    }
+
+    /**
+     * Control ids for the options of a Fossify [org.fossify.commons.dialogs.RadioGroupDialog] the caller has just
+     * shown (call it after [tagDialog]). The library gives each option the id of its INDEX, which the scanner
+     * cannot read, so options that open DIFFERENT screens or dialogs (a view, "Custom", Event vs Task) were found
+     * only by position. [idOf] maps each option's stable key (the RadioItem id or value) to a declared id, or 0 to
+     * keep it. The library's own first-layout scroll still reads the index ids, so the ids are set after the
+     * first layout.
+     */
+    @JvmStatic
+    fun tagRadioOptions(keys: List<Any?>, idOf: (Any?) -> Int) {
+        if (!BuildConfig.EXPOSE_TEST_TAGS || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return
+        val root = WindowInspector.getGlobalWindowViews().lastOrNull() ?: return
+        val group = root.findViewById<RadioGroup>(org.fossify.commons.R.id.dialog_radio_group) ?: return
+        val apply = Runnable {
+            for (i in 0 until minOf(group.childCount, keys.size)) {
+                val id = idOf(keys[i])
+                if (id != 0) group.getChildAt(i).id = id
+            }
+        }
+        group.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                group.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                group.post(apply)
+            }
+        })
     }
 
     private val fragmentCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
