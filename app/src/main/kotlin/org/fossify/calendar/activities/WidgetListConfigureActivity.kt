@@ -167,6 +167,7 @@ class WidgetListConfigureActivity : SimpleActivity() {
             }
         }
         ScreenTags.tagDialog(R.id.screen_tag_WidgetListPeriodDialog)
+        ScreenTags.tagRadioOptions(items.map { it.value }) { if (it == EVENT_PERIOD_CUSTOM) R.id.widget_period_option_custom else 0 }
     }
 
     private fun updateSelectedPeriod(selectedPeriod: Int) {

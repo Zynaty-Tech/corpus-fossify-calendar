@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- mqa control ids for options of library radio dialogs. Names only, attached to nothing here:
+     ScreenTags.tagRadioOptions attaches them at run time, in debug only. One id per option KEY, never per index. -->
+<resources>
+    <item name="change_view_option_daily" type="id" />
+    <item name="change_view_option_weekly" type="id" />
+    <item name="change_view_option_monthly" type="id" />
+    <item name="change_view_option_monthly_daily" type="id" />
+    <item name="change_view_option_yearly" type="id" />
+    <item name="change_view_option_event_list" type="id" />
+    <item name="repeat_interval_option_none" type="id" />
+    <item name="repeat_interval_option_daily" type="id" />
+    <item name="repeat_interval_option_weekly" type="id" />
+    <item name="repeat_interval_option_monthly" type="id" />
+    <item name="repeat_interval_option_yearly" type="id" />
+    <item name="repeat_interval_option_custom" type="id" />
+    <item name="widget_period_option_custom" type="id" />
+    <item name="new_item_option_event" type="id" />
+    <item name="new_item_option_task" type="id" />
+</resources>

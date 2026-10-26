@@ -179,6 +179,7 @@ class MonthViewWrapper(
                         }
                     }
                     ScreenTags.tagDialog(R.id.screen_tag_NewEventOrTaskDialog)
+                    ScreenTags.tagRadioOptions(items.map { it.id }) { if (it == TYPE_TASK) R.id.new_item_option_task else R.id.new_item_option_event }
                 } else {
                     context.launchNewEventIntent(day.code)
                 }

@@ -141,6 +141,7 @@ android {
 tasks.withType<Test>().configureEach {
     inputs.file("src/qa/assets/mqa-screens.json")
     inputs.file("src/main/kotlin/org/fossify/calendar/qa/ScreenTags.kt")
+    inputs.file("src/main/res/values/mqa_screen_tags.xml")
 }
 
 detekt {
