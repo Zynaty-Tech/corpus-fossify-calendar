@@ -1,5 +1,7 @@
 package org.fossify.calendar.adapters
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.view.ContextThemeWrapper
 import android.view.Gravity
 import android.view.Menu
@@ -173,10 +175,12 @@ class ManageCalendarsAdapter(
                     RadioGroupDialog(activity, items) {
                         deleteCalendars(it == DELETE_EVENTS)
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_DeleteCalendarDialog)
                 } else {
                     ConfirmationDialog(activity) {
                         deleteCalendars(true)
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_DeleteCalendarDialog)
                 }
             }
         }

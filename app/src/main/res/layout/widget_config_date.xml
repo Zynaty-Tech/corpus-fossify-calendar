@@ -46,6 +46,7 @@
 
         <ImageView
             android:id="@+id/config_bg_color"
+            android:contentDescription="@string/background_color"
             android:layout_width="@dimen/widget_colorpicker_size"
             android:layout_height="@dimen/widget_colorpicker_size"
             android:layout_above="@+id/config_text_color"
@@ -73,6 +74,7 @@
 
         <ImageView
             android:id="@+id/config_text_color"
+            android:contentDescription="@string/text_color"
             android:layout_width="@dimen/widget_colorpicker_size"
             android:layout_height="@dimen/widget_colorpicker_size"
             android:layout_alignParentBottom="true"

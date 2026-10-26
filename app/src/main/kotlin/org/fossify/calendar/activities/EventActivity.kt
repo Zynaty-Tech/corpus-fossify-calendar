@@ -1,5 +1,7 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -295,6 +297,7 @@ class EventActivity : SimpleActivity() {
                     discard()
                 }
             }
+            ScreenTags.tagDialog(R.id.screen_tag_DiscardChangesDialog)
         } else {
             discard()
         }
@@ -848,6 +851,7 @@ class EventActivity : SimpleActivity() {
             mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
     }
 
     private fun showReminder2Dialog() {
@@ -855,6 +859,7 @@ class EventActivity : SimpleActivity() {
             mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
     }
 
     private fun showReminder3Dialog() {
@@ -862,6 +867,7 @@ class EventActivity : SimpleActivity() {
             mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
             checkReminderTexts()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
     }
 
     private fun showRepeatIntervalDialog() {
@@ -938,6 +944,7 @@ class EventActivity : SimpleActivity() {
                 RadioGroupDialog(this, items, mRepeatRule) {
                     setRepeatRule(it as Int)
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_RepeatRuleMonthlyDialog)
             }
 
             mRepeatInterval.isXYearlyRepetition() -> {
@@ -945,6 +952,7 @@ class EventActivity : SimpleActivity() {
                 RadioGroupDialog(this, items, mRepeatRule) {
                     setRepeatRule(it as Int)
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_RepeatRuleYearlyDialog)
             }
         }
     }
@@ -1211,6 +1219,7 @@ class EventActivity : SimpleActivity() {
                     gotNewEventColor(newColor, currentColor, calendar.color)
                 }
             }
+            ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
         }
     }
 
@@ -1289,6 +1298,7 @@ class EventActivity : SimpleActivity() {
         RadioGroupDialog(this, items, currentValue) {
             callback(it as Int)
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTypeDialog)
     }
 
     private fun showAccessLevelPicker(currentValue: Int, callback: (Int) -> Unit) {
@@ -1307,6 +1317,7 @@ class EventActivity : SimpleActivity() {
         RadioGroupDialog(this, items, mappedCurrentValue) {
             callback(it as Int)
         }
+        ScreenTags.tagDialog(R.id.screen_tag_AccessLevelDialog)
     }
 
     private fun showAvailabilityPicker(currentValue: Int, callback: (Int) -> Unit) {
@@ -1317,6 +1328,7 @@ class EventActivity : SimpleActivity() {
         RadioGroupDialog(this, items, currentValue) {
             callback(it as Int)
         }
+        ScreenTags.tagDialog(R.id.screen_tag_AvailabilityDialog)
     }
 
     private fun showStatusPicker(currentValue: Int, callback: (Int) -> Unit) {
@@ -1328,6 +1340,7 @@ class EventActivity : SimpleActivity() {
         RadioGroupDialog(this, items, currentValue) {
             callback(it as Int)
         }
+        ScreenTags.tagDialog(R.id.screen_tag_EventStatusDialog)
     }
 
     private fun updateReminderTypeImages() {
@@ -1722,6 +1735,7 @@ class EventActivity : SimpleActivity() {
                         textId = org.fossify.commons.R.string.allow_notifications_reminders,
                         positiveActionCallback = { openNotificationSettings() }
                     )
+                    ScreenTags.tagDialog(R.id.screen_tag_NotificationPermissionDialog)
                 }
             }
         } else {
@@ -1881,6 +1895,7 @@ class EventActivity : SimpleActivity() {
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(R.id.screen_tag_DatePickerDialog)
     }
 
     private fun setupStartTime() {
@@ -1913,6 +1928,7 @@ class EventActivity : SimpleActivity() {
                 mEventStartDateTime.minuteOfHour,
                 config.use24HourFormat
             ).show()
+            ScreenTags.tagDialog(R.id.screen_tag_TimePickerDialog)
         }
     }
 
@@ -1929,6 +1945,7 @@ class EventActivity : SimpleActivity() {
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(R.id.screen_tag_DatePickerDialog)
     }
 
     private fun setupEndTime() {
@@ -1961,6 +1978,7 @@ class EventActivity : SimpleActivity() {
                 mEventEndDateTime.minuteOfHour,
                 config.use24HourFormat
             ).show()
+            ScreenTags.tagDialog(R.id.screen_tag_TimePickerDialog)
         }
     }
 
@@ -2230,6 +2248,7 @@ class EventActivity : SimpleActivity() {
                         attendee.status = it as Int
                         updateAttendeeMe(this, attendee)
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_AttendeeStatusDialog)
                 }
             }
         }

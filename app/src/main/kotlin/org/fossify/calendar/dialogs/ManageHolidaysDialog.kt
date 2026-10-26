@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
 import org.fossify.calendar.databinding.DialogManageHolidaysBinding
@@ -36,6 +38,7 @@ class ManageHolidaysDialog(
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.manage_holidays)
+                ScreenTags.tagDialog(R.id.screen_tag_ManageHolidaysDialog)
             }
     }
 

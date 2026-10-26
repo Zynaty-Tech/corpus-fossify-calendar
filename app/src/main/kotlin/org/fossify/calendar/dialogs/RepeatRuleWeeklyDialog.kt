@@ -1,5 +1,8 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import org.fossify.calendar.databinding.DialogVerticalLinearLayoutBinding
 import org.fossify.calendar.databinding.MyCheckboxBinding
@@ -35,6 +38,7 @@ class RepeatRuleWeeklyDialog(val activity: Activity, val curRepeatRule: Int, val
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this)
+                ScreenTags.tagDialog(R.id.screen_tag_RepeatRuleWeeklyDialog)
             }
     }
 

@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -48,6 +50,7 @@ class EditCalendarDialog(
                             setupColor(typeColor)
                         }
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
                 } else {
                     val currentColor = calendar!!.color
                     val colors =
@@ -80,6 +83,7 @@ class EditCalendarDialog(
                         }
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_EditCalendarDialog)
             }
     }
 

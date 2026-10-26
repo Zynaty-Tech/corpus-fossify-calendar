@@ -1,5 +1,7 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -259,6 +261,7 @@ class TaskActivity : SimpleActivity() {
                     discard()
                 }
             }
+            ScreenTags.tagDialog(R.id.screen_tag_DiscardChangesDialog)
         } else {
             discard()
         }
@@ -577,6 +580,7 @@ class TaskActivity : SimpleActivity() {
                         textId = org.fossify.commons.R.string.allow_notifications_reminders,
                         positiveActionCallback = { openNotificationSettings() }
                     )
+                    ScreenTags.tagDialog(R.id.screen_tag_NotificationPermissionDialog)
                 }
             }
         } else {
@@ -702,6 +706,7 @@ class TaskActivity : SimpleActivity() {
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(R.id.screen_tag_DatePickerDialog)
     }
 
     private fun setupTime() {
@@ -734,6 +739,7 @@ class TaskActivity : SimpleActivity() {
                 mTaskDateTime.minuteOfHour,
                 config.use24HourFormat
             ).show()
+            ScreenTags.tagDialog(R.id.screen_tag_TimePickerDialog)
         }
     }
 
@@ -889,6 +895,7 @@ class TaskActivity : SimpleActivity() {
             mReminder1Minutes = if (it == -1 || it == 0) it else it / 60
             updateReminderTexts()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
     }
 
     private fun showReminder2Dialog() {
@@ -896,6 +903,7 @@ class TaskActivity : SimpleActivity() {
             mReminder2Minutes = if (it == -1 || it == 0) it else it / 60
             updateReminderTexts()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
     }
 
     private fun showReminder3Dialog() {
@@ -903,6 +911,7 @@ class TaskActivity : SimpleActivity() {
             mReminder3Minutes = if (it == -1 || it == 0) it else it / 60
             updateReminderTexts()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_ReminderTimeDialog)
     }
 
     private fun getReminders(): ArrayList<Reminder> {
@@ -971,6 +980,7 @@ class TaskActivity : SimpleActivity() {
                         }
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ColorPickerDialog)
             }
         }
     }
@@ -1067,6 +1077,7 @@ class TaskActivity : SimpleActivity() {
                 RadioGroupDialog(this, items, mRepeatRule) {
                     setRepeatRule(it as Int)
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_RepeatRuleMonthlyDialog)
             }
 
             mRepeatInterval.isXYearlyRepetition() -> {
@@ -1074,6 +1085,7 @@ class TaskActivity : SimpleActivity() {
                 RadioGroupDialog(this, items, mRepeatRule) {
                     setRepeatRule(it as Int)
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_RepeatRuleYearlyDialog)
             }
         }
     }

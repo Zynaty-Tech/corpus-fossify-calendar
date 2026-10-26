@@ -1,5 +1,8 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.fossify.calendar.extensions.config
@@ -24,6 +27,7 @@ class SnoozeReminderActivity : AppCompatActivity() {
                 }
             }
         }
+        ScreenTags.tagDialog(R.id.screen_tag_SnoozeTimeDialog)
     }
 
     private fun dialogCancelled() {

@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
@@ -62,6 +64,7 @@ class ExportEventsDialog(
                         exportEventsFolder.setText(activity.humanizePath(it))
                         realPath = it
                     }
+                    ScreenTags.tagDialog(R.id.screen_tag_FilePickerDialog)
                 }
             }
 
@@ -123,6 +126,7 @@ class ExportEventsDialog(
                         }
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ExportEventsDialog)
             }
     }
 }

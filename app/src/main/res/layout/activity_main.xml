@@ -60,6 +60,7 @@
 
             <ImageView
                 android:id="@+id/fab_task_icon"
+                android:contentDescription="@string/new_task"
                 android:layout_width="@dimen/secondary_fab_size"
                 android:layout_height="@dimen/secondary_fab_size"
                 android:layout_marginBottom="@dimen/activity_margin"

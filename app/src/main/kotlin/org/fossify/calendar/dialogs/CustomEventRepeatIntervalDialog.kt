@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
@@ -25,6 +27,7 @@ class CustomEventRepeatIntervalDialog(val activity: Activity, val callback: (sec
                     dialog = alertDialog
                     alertDialog.showKeyboard(binding.dialogCustomRepeatIntervalValue)
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_CustomEventRepeatIntervalDialog)
             }
     }
 

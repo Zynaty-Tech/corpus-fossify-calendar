@@ -1,5 +1,7 @@
 package org.fossify.calendar.activities
 
+import org.fossify.calendar.qa.ScreenTags
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.fossify.calendar.R
@@ -27,6 +29,7 @@ class CalendarPickerActivity : AppCompatActivity() {
             }
             finish()
         }
+        ScreenTags.tagDialog(R.id.screen_tag_NewEventOrTaskDialog)
     }
 
     private fun dialogCancelled() {

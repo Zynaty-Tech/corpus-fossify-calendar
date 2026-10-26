@@ -1,5 +1,7 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.qa.ScreenTags
+
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
@@ -113,6 +115,7 @@ class ImportEventsDialog(
                         }
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ImportEventsDialog)
             }
     }
 

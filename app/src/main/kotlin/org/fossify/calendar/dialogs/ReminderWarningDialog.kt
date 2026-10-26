@@ -1,5 +1,8 @@
 package org.fossify.calendar.dialogs
 
+import org.fossify.calendar.R
+import org.fossify.calendar.qa.ScreenTags
+
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -22,6 +25,7 @@ class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
                         redirectToSettings()
                     }
                 }
+                ScreenTags.tagDialog(R.id.screen_tag_ReminderWarningDialog)
             }
     }
 
